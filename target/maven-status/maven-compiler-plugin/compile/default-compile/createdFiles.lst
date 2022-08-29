@@ -1,0 +1,8 @@
+com/presolved/casemanagement/workflow/demo/model/Questionnaire.class
+com/presolved/casemanagement/workflow/demo/model/SupportCase.class
+com/presolved/casemanagement/workflow/demo/model/Comment.class
+com/presolved/casemanagement/workflow/demo/service/TriageService.class
+com/presolved/casemanagement/workflow/demo/model/State.class
+com/presolved/casemanagement/workflow/demo/service/StateService.class
+com/presolved/casemanagement/workflow/demo/service/CommentService.class
+com/presolved/casemanagement/workflow/demo/model/Product.class

@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2019-09/schema","type":"object","$defs":{"Comment":{"type":"object","properties":{"author":{"type":"string"},"date":{"type":"string"},"text":{"type":"string"}}}},"properties":{"comment":{"$ref":"#/$defs/Comment","output":true},"evaluation":{"type":"integer","output":true}}}

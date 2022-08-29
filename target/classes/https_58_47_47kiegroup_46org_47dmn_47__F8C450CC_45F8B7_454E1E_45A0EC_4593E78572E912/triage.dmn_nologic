@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_F8C450CC-F8B7-4E1E-A0EC-93E78572E912" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_6B5CE030-A1C2-4E6E-BC0B-0F5CD77BB8D9" name="triage" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_F8C450CC-F8B7-4E1E-A0EC-93E78572E912">
+  <dmn:extensionElements></dmn:extensionElements>
+  <dmn:decision id="_80A39431-C751-491A-A268-6C399F96C4B7" name="SupportGroup">
+    <dmn:extensionElements></dmn:extensionElements>
+    <dmn:question>What team does this product belong to?</dmn:question>
+    <dmn:variable id="_95B3159F-0E2D-4595-8D0D-E2C51E9C200B" name="SupportGroup" typeRef="string"></dmn:variable>
+    <dmn:informationRequirement id="_8530702D-9F4D-4C14-A667-46C81770318C">
+      <dmn:requiredInput href="#_D86E20EF-9B99-4C1B-8E77-2F7EBFA7C6FA"></dmn:requiredInput>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_A28EE978-FA40-4AD6-88C8-CF0A8872B763">
+      <dmn:requiredInput href="#_BD68B583-521C-4F35-AC11-B4F85BE3F652"></dmn:requiredInput>
+    </dmn:informationRequirement>
+  </dmn:decision>
+  <dmn:inputData id="_BD68B583-521C-4F35-AC11-B4F85BE3F652" name="ProductFamily">
+    <dmn:extensionElements></dmn:extensionElements>
+    <dmn:variable id="_9DC438AF-81EF-4280-8A10-20DA32E3AD49" name="ProductFamily" typeRef="string"></dmn:variable>
+  </dmn:inputData>
+  <dmn:inputData id="_D86E20EF-9B99-4C1B-8E77-2F7EBFA7C6FA" name="ProductName">
+    <dmn:extensionElements></dmn:extensionElements>
+    <dmn:variable id="_7841CA0E-6B4F-468F-B7A6-80BBF68A2D6C" name="ProductName" typeRef="string"></dmn:variable>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension></di:extension>
+      <dmndi:DMNShape id="dmnshape-_80A39431-C751-491A-A268-6C399F96C4B7" dmnElementRef="_80A39431-C751-491A-A268-6C399F96C4B7" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"></dmndi:FillColor>
+          <dmndi:StrokeColor red="0" green="0" blue="0"></dmndi:StrokeColor>
+          <dmndi:FontColor red="0" green="0" blue="0"></dmndi:FontColor>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="399" y="171" width="100" height="50"></dc:Bounds>
+        <dmndi:DMNLabel></dmndi:DMNLabel>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_BD68B583-521C-4F35-AC11-B4F85BE3F652" dmnElementRef="_BD68B583-521C-4F35-AC11-B4F85BE3F652" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"></dmndi:FillColor>
+          <dmndi:StrokeColor red="0" green="0" blue="0"></dmndi:StrokeColor>
+          <dmndi:FontColor red="0" green="0" blue="0"></dmndi:FontColor>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="291" y="314" width="100" height="50"></dc:Bounds>
+        <dmndi:DMNLabel></dmndi:DMNLabel>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_D86E20EF-9B99-4C1B-8E77-2F7EBFA7C6FA" dmnElementRef="_D86E20EF-9B99-4C1B-8E77-2F7EBFA7C6FA" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"></dmndi:FillColor>
+          <dmndi:StrokeColor red="0" green="0" blue="0"></dmndi:StrokeColor>
+          <dmndi:FontColor red="0" green="0" blue="0"></dmndi:FontColor>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="476" y="314" width="100" height="50"></dc:Bounds>
+        <dmndi:DMNLabel></dmndi:DMNLabel>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_8530702D-9F4D-4C14-A667-46C81770318C" dmnElementRef="_8530702D-9F4D-4C14-A667-46C81770318C">
+        <di:waypoint x="526" y="339"></di:waypoint>
+        <di:waypoint x="449" y="221"></di:waypoint>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_A28EE978-FA40-4AD6-88C8-CF0A8872B763" dmnElementRef="_A28EE978-FA40-4AD6-88C8-CF0A8872B763">
+        <di:waypoint x="341" y="339"></di:waypoint>
+        <di:waypoint x="449" y="196"></di:waypoint>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
