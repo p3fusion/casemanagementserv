@@ -16,7 +16,7 @@ This example shows how to
 
 ### Decision Table to assign task to user(similar to pega get next work)
 
-![triage decision table](docs/images/triage_decision_table.png)
+![triage decision table](docs/images/Screenshot 2022-08-29 at 3.56.29 PM.png)
 
 Workflow to raise service ticket and the ticket will be assigned to user based on skill set which is configured in decicion table.
 
