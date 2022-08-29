@@ -7,15 +7,15 @@ phases:
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
   pre_build:
     commands:
-      - docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 851171462885.dkr.ecr.us-east-1.amazonaws.com
+      - docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) xxxxxxxxxx<AccID>.dkr.ecr.us-east-1.amazonaws.com
   build:
     commands:
       - ./mvnw quarkus:add-extension -Dextensions="container-image-docker"
       - ./mvnw clean package -Dquarkus.container-image.build=true
-      - docker tag root/caseapiserv:latest 851171462885.dkr.ecr.us-east-1.amazonaws.com/cases
+      - docker tag root/caseapiserv:latest xxxxxxxxxx<AccID>.dkr.ecr.us-east-1.amazonaws.com/cases
   post_build:
     commands:
-      - docker push 851171462885.dkr.ecr.us-east-1.amazonaws.com/cases
-      - printf '[{"name":"createcase:4","imageUri":"%s"}]' 851171462885.dkr.ecr.us-east-1.amazonaws.com/cases > imagedefinitions.json
+      - docker push xxxxxxxxxx<AccID>.dkr.ecr.us-east-1.amazonaws.com/cases
+      - printf '[{"name":"createcase:4","imageUri":"%s"}]' xxxxxxxxxx<AccID>.dkr.ecr.us-east-1.amazonaws.com/cases > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
