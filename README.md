@@ -5,7 +5,7 @@
 Sample application to create case and subtask on demand basis and users can resolve the case and feedback child case will be created to get the customer feedback after completion
 
 
-### Help Desk process
+### workflow/ process
 
 ![help desk flexible process](docs/images/process_overview.png)
 
