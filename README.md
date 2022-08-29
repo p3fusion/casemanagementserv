@@ -1,14 +1,9 @@
-# Flexible process
+# Presolved Case Management Sample App Using Kogito
 
-## Description
+## Overview
 
-A quickstart project that shows the use of flexible processes.
+Sample application to create case and subtask on demand basis and users can resolve the case and feedback child case will be created to get the customer feedback after completion
 
-This example shows how to
-
-* make use of ad-hoc subprocesses
-* make use of milestones
-* make use of DMN business rule integration
 
 ### Help Desk process
 
@@ -85,16 +80,6 @@ To run the generated native executable, generated in `target/`, execute
 ```{bash}
 ./target/flexible-process-quarkus-runner
 ```
-
-## OpenAPI (Swagger) documentation
-
-[Specification at swagger.io](https://swagger.io/docs/specification/about/)
-
-You can take a look at the [OpenAPI definition](http://localhost:8080/openapi?format=json) - automatically generated and included in this service - to determine all available operations exposed by this service. For easy readability you can visualize the OpenAPI definition file using a UI tool like for example available [Swagger UI](https://editor.swagger.io).
-
-In addition, various clients to interact with this service can be easily generated using this OpenAPI definition.
-
-When running in either Quarkus Development or Native mode, we also leverage the [Quarkus OpenAPI extension](https://quarkus.io/guides/openapi-swaggerui#use-swagger-ui-for-development) that exposes [Swagger UI](http://localhost:8080/swagger-ui/) that you can use to look at available REST endpoints and send test requests.
 
 ## Usage example
 
@@ -302,7 +287,7 @@ Check the response where the state is now set as `RESOLVED`.
 }
 ```
 
-### Questionnaire
+### Feedback 
 
 There is a milestone waiting for a CaseResolved event. When received a Questionnaire task is
 created and assigned to the `customer` group.
