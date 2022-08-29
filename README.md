@@ -127,7 +127,7 @@ Given the following support case:
 Create a POST request to the service desk endpoint.
 
 ```{bash}
-curl -D -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/newTicket.json http://localhost:8080/serviceDesk
+curl -D -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/newTicket.json http://localhost:8080/serviceCase
 ```
 
 Expect a response containing the ticket id and the current status of the process data where the engineer is assigned and the state is `WAITING_FOR_OWNER`. Note that also a Location HTTP Header
@@ -137,7 +137,7 @@ is present:
 HTTP/1.1 201 Created
 Content-Length: 303
 Content-Type: application/json
-Location: http://localhost:8080/serviceDesk/de42a39a-2711-4d23-a890-aad24fb8e924
+Location: http://localhost:8080/serviceCase/de42a39a-2711-4d23-a890-aad24fb8e924
 
 {
   "id": "de42a39a-2711-4d23-a890-aad24fb8e924",
@@ -164,15 +164,15 @@ and each time a comment is added the state will be updated as waiting for the ot
 
 There are no pre-existing tasks for adding comments but an endpoint is available to instantiate these ad-hoc tasks.
 
-For that an empty post should be sent to `/serviceDesk/ReceiveSupportComment`. Note the extra flag to retreive the response headers.
+For that an empty post should be sent to `/serviceCase/ReceiveSupportComment`. Note the extra flag to retreive the response headers.
 
 ```{bash}
-$ curl -D - -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceDesk/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveSupportComment
+$ curl -D - -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceCase/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveSupportComment
 
 HTTP/1.1 201 Created
 Content-Length: 303
 Content-Type: application/json
-Location: http://localhost:8080/serviceDesk/de42a39a-2711-4d23-a890-aad24fb8e924/ReceiveSupportComment/36e69fa2-2e5a-4ac5-9115-b326499ff877
+Location: http://localhost:8080/serviceCase/de42a39a-2711-4d23-a890-aad24fb8e924/ReceiveSupportComment/36e69fa2-2e5a-4ac5-9115-b326499ff877
 
 {"id":"de42a39a-2711-4d23-a890-aad24fb8e924","supportCase":{"product":{"name":"Kogito","family":"Middleware"},"description":"Kogito is not working for some reason.","engineer":"kelly","customer":"Paco the customer","state":"WAITING_FOR_OWNER","comments":null,"questionnaire":null},"supportGroup":"Kogito"}
 ```
@@ -183,7 +183,7 @@ Use this path to create the comment. It is important to have in mind the user an
 this task is restricted to the _support_ group
 
 ```{bash}
-curl -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/supportComment.json http://localhost:8080/serviceDesk/de42a39a-2711-4d23-a890-aad24fb8e924/ReceiveSupportComment/36e69fa2-2e5a-4ac5-9115-b326499ff877?user=kelly&group=support
+curl -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/supportComment.json http://localhost:8080/serviceCase/de42a39a-2711-4d23-a890-aad24fb8e924/ReceiveSupportComment/36e69fa2-2e5a-4ac5-9115-b326499ff877?user=kelly&group=support
 ```
 
 And the data containing the comment and the updated state will be returned:
@@ -216,15 +216,15 @@ And the data containing the comment and the updated state will be returned:
 ### Add a customer comment
 
 Now it's time for the customer to reply to the engineer's comment. For that an empty post should be sent to
-`/serviceDesk/ReceiveCustomerComment`. Note the extra flag to retreive the response headers.
+`/serviceCase/ReceiveCustomerComment`. Note the extra flag to retreive the response headers.
 
 ```{bash}
-$ curl -D - -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceDesk/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveCustomerComment
+$ curl -D - -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceCase/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveCustomerComment
 
 HTTP/1.1 201 Created
 Content-Length: 305
 Content-Type: application/json
-Location: http://localhost:8080/serviceDesk/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveSupportComment/1ac85d3c-c02c-11ea-b3de-0242ac130004
+Location: http://localhost:8080/serviceCase/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveSupportComment/1ac85d3c-c02c-11ea-b3de-0242ac130004
 
 {"id":"b3c75b24-2691-4a76-902c-c9bc29ea076c","supportCase":{"product":{"name":"Kogito","family":"Middleware"},"description":"Kogito is not working for some reason.","engineer":"kelly","customer":"Paco the customer","state":"WAITING_FOR_CUSTOMER","comments":null,"questionnaire":null},"supportGroup":"Kogito"}
 ```
@@ -235,7 +235,7 @@ Use this path to create the comment. It is important to have in mind the user an
 this task is restricted to the _customer_ group
 
 ```{bash}
-curl -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/customerComment.json http://localhost:8080/serviceDesk/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveCustomerComment/1ac85d3c-c02c-11ea-b3de-0242ac130004?user=Paco&group=customer
+curl -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/customerComment.json http://localhost:8080/serviceCase/b3c75b24-2691-4a76-902c-c9bc29ea076c/ReceiveCustomerComment/1ac85d3c-c02c-11ea-b3de-0242ac130004?user=Paco&group=customer
 ```
 
 And the data containing the comment and the updated state will be returned:
@@ -275,7 +275,7 @@ And the data containing the comment and the updated state will be returned:
 In this case, the customer is happy with the provided resolution and will proceed to set the case as `RESOLVED`.
 
 ```{bash}
-curl -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceDesk/b3c75b24-2691-4a76-902c-c9bc29ea076c/Resolve_Case
+curl -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceCase/b3c75b24-2691-4a76-902c-c9bc29ea076c/Resolve_Case
 ```
 
 Check the response where the state is now set as `RESOLVED`.
@@ -318,7 +318,7 @@ created and assigned to the `customer` group.
 In order to know the task instance id, the `tasks` endpoint must be queried.
 
 ```{bash}
-$ curl -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceDesk/b3c75b24-2691-4a76-902c-c9bc29ea076c/tasks
+$ curl -H 'Content-Type:application/json' -H 'Accept:application/json' http://localhost:8080/serviceCase/b3c75b24-2691-4a76-902c-c9bc29ea076c/tasks
 [
   {"id:"2cd185b6-d6db-4984-a0ae-9dc4fa15cb6d", "name": "Questionnaire"}
 ]
@@ -327,5 +327,5 @@ $ curl -H 'Content-Type:application/json' -H 'Accept:application/json' http://lo
 Use this id in the path:
 
 ```{bash}
-curl -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/questionnaire.json http://localhost:8080/serviceDesk/b3c75b24-2691-4a76-902c-c9bc29ea076c/Questionnaire/2cd185b6-d6db-4984-a0ae-9dc4fa15cb6d?user=Paco&group=customer
+curl -XPOST -H 'Content-Type:application/json' -H 'Accept:application/json' -d @docs/requests/questionnaire.json http://localhost:8080/serviceCase/b3c75b24-2691-4a76-902c-c9bc29ea076c/Questionnaire/2cd185b6-d6db-4984-a0ae-9dc4fa15cb6d?user=Paco&group=customer
 ```
