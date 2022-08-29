@@ -14,23 +14,20 @@ This example shows how to
 
 ![help desk flexible process](docs/images/process_overview.png)
 
-### Triage decision table
+### Decision Table to assign task to user(similar to pega get next work)
 
 ![triage decision table](docs/images/triage_decision_table.png)
 
-The example shows a help desk process to allow customers creating support cases
-that will be assigned to engineers based on the product family and name using
-a DMN decision table. If an automatic assignment is not possible, a manual
-assignment task will be created.
+Workflow to raise service ticket and the ticket will be assigned to user based on skill set which is configured in decicion table.
 
-Once assigned the support case will be set to `WAITING_FOR_OWNER` state meaning
+Once assigned the support case status will be set to `WAITING_FOR_OWNER` state meaning
 that the engineer has to work on the case and provide a solution or add a
 comment asking for more information.
 
 At any moment customers or engineers can add comments until the case is
 `CLOSED`.
 
-The case can be set as `RESOLVED` by either an engineer or a customer. Once
+The case can be set as `RESOLVED` by either an engineer or a customer who raised the ticket. Once
 this happens a Questionnaire task will be made available where the customer
 can provide feedback about the case resolution.
 
@@ -60,7 +57,6 @@ When using native image compilation, you will also need:
 mvn clean compile quarkus:dev
 ```
 
-NOTE: With dev mode of Quarkus you can take advantage of hot reload for business assets like processes, rules, decision tables and java code. No need to redeploy or restart your running application.
 
 ### Package and Run in JVM mode
 
@@ -99,10 +95,6 @@ You can take a look at the [OpenAPI definition](http://localhost:8080/openapi?fo
 In addition, various clients to interact with this service can be easily generated using this OpenAPI definition.
 
 When running in either Quarkus Development or Native mode, we also leverage the [Quarkus OpenAPI extension](https://quarkus.io/guides/openapi-swaggerui#use-swagger-ui-for-development) that exposes [Swagger UI](http://localhost:8080/swagger-ui/) that you can use to look at available REST endpoints and send test requests.
-
-## Deploying with the Kogito Operator
-
-In the [operator](operator) directory you'll find the custom resources needed to deploy this example on OpenShift with the [Kogito Operator](https://docs.jboss.org/kogito/release/latest/html_single/#chap_kogito-deploying-on-openshift).
 
 ## Usage example
 
