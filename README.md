@@ -11,7 +11,7 @@ Sample application to create case and subtask on demand basis and users can reso
 
 ### Decision Table to assign task to user(similar to pega get next work)
 
-![Screenshot 2022-08-29 at 3.56.29 PM](docs/images/Screenshot 2022-08-29 at 3.56.29 PM.png)
+<img width="497" alt="image" src="https://user-images.githubusercontent.com/35356763/187220688-67f5abbf-b99d-4b02-bbd4-9c9244a22ea9.png">
 
 Workflow to raise service ticket and the ticket will be assigned to user based on skill set which is configured in decicion table.
 
